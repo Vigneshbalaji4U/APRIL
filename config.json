@@ -1,0 +1,29 @@
+{
+  "app_name": "தமிழ் குரு திட்ட உதவியாளர்",
+  "version": "1.0.0",
+  "language": "ta",
+  "models": {
+    "stt_model": "openai/whisper-small",
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "llm_model": "llama3.2:3b"
+  },
+  "audio": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "record_duration": 7,
+    "chunk_duration": 0.5
+  },
+  "paths": {
+    "documents": "./data/documents",
+    "audio_cache": "./data/audio_cache",
+    "chroma_db": "./data/chroma_db",
+    "user_config": "./data/user_config.json"
+  },
+  "assistant": {
+    "wake_word": "உதவி",
+    "exit_word": "நிறுத்து",
+    "response_language": "ta",
+    "enable_voice": true,
+    "enable_history": true
+  }
+}
