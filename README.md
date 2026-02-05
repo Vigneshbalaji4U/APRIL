@@ -1,4 +1,4 @@
-# Tamil Voice Plans Assistant 🎤
+# APRIL-POC (Artificial Personal Responsive Intelligence Listener) 🎤
 
 A complete end-to-end Tamil voice assistant that answers questions based on your personal plans and documents.
 
