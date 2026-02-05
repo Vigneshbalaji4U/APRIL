@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  tamil-voice-assistant:
+    build: .
+    container_name: tamil-assistant
+    restart: unless-stopped
+    ports:
+      - "8501:8501"      # Web interface
+      - "11434:11434"    # Ollama API
+    volumes:
+      # Your documents (mount local folder)
+      - ./my-tamil-documents:/app/data/documents:rw
+      # Audio cache (optional)
+      - ./audio-cache:/app/data/audio_cache:rw
+      # Vector database (persists embeddings)
+      - ./vector-db:/app/data/chroma_db:rw
+      # For Linux audio input/output
+      - /dev/snd:/dev/snd:rw
+      # For PulseAudio (Linux desktop)
+      # - /run/user/1000/pulse:/run/user/1000/pulse:ro
+    environment:
+      - LANG=ta_IN.UTF-8
+      - TZ=Asia/Kolkata
+      - ENABLE_VOICE=true
+      - DEFAULT_LANGUAGE=ta
+    # Linux devices for audio
+    devices:
+      - "/dev/snd:/dev/snd"
+    # For macOS, use pulseaudio socket
+    # volumes:
+    #   - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    #   - ${HOME}/.config/pulse:/home/tamiluser/.config/pulse:ro
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
