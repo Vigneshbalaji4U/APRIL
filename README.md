@@ -1,4 +1,4 @@
-# APRIL-POC (Artificial Personal Responsive Intelligence Listener)
+# APRIL-POC (Artificial Personal Responsive Intelligent Listener)
 
 A complete end-to-end Tamil voice assistant that answers questions based on your personal plans and documents.
 
